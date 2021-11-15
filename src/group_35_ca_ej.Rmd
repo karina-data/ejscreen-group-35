@@ -1,0 +1,27 @@
+---
+title: "Group 35 CA pollution burden"
+author: "Karina Johnston, Caroline Shepherd"
+date: "11/15/2021"
+output: html_document
+---
+
+```{r setup, include = FALSE, warning = FALSE, message = FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+
+# Attach packages
+library(tidyverse)
+library(janitor)
+library(here)
+library(hexbin)  # new package to use `geom_hex()` function
+```
+
+This file is an exploration of California environmental justice data using CalEnviroScreen 3.0 scores (CES 3.0), or the California Communities Environmental Health Screening Tool. (https://caleja.org/wp-content/uploads/2015/09/CES3.0-5.pdf). CES 3.0 uses 20 indicators to provide a statewide ranking of all 8,000 census tracts in California. Communities with high total CES 3.0 scores have high cumulative pollution burdens and highly vulnerable population characteristics that cause pollutants to become more deadly.
+
+```{r}
+# Read in the CA Environmental Justice csv and clean column names
+ces <- read_csv(here("data", "ces3demographics.csv")) %>% 
+  clean_names()
+```
+
+
+
