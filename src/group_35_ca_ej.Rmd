@@ -23,11 +23,12 @@ ces <- read_csv(here("data", "ces3demographics.csv")) %>%
   clean_names()
 ```
 
-```{r}
-# Create scatterplot graph to show the relationship between white % and CalEnviroScreen pollution burden score
+```{r, fig.cap = "**Figure 1.** Relationship between CalEnviroScreen pollution burden scores (3.0) and white percent of the community."}
+# Create hexbin graph to show the relationship between white % and CalEnviroScreen pollution burden score
 
 ggplot(data = ces, aes(x = white_percent, y = ces_3_0_score)) +
-  geom_point()
+  geom_hex() +
+  labs(x = "White Population (%)", y = "CalEnviroScreen 3.0 Score")
 ```
 
 
