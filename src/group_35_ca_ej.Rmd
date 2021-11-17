@@ -15,10 +15,11 @@ library(here)
 library(hexbin)  # new package to use `geom_hex()` function
 ```
 
-This file is an exploration of California environmental justice data using CalEnviroScreen 3.0 scores (CES 3.0), or the California Communities Environmental Health Screening Tool. (https://caleja.org/wp-content/uploads/2015/09/CES3.0-5.pdf). CES 3.0 uses 20 indicators to provide a statewide ranking of all 8,000 census tracts in California. Communities with high total CES 3.0 scores have high cumulative pollution burdens and highly vulnerable population characteristics that cause pollutants to become more deadly.
+This file is an exploration of California environmental justice data using CalEnviroScreen 3.0 scores (CES 3.0), or the California Communities Environmental Health Screening Tool (https://caleja.org/wp-content/uploads/2015/09/CES3.0-5.pdf). CES 3.0 uses 20 indicators to provide a statewide ranking of all 8,000 census tracts in California. Communities with high total CES 3.0 scores have high cumulative pollution burdens and highly vulnerable population characteristics that cause pollutants to become more deadly.
 
 ```{r}
 # Read in the CA Environmental Justice csv and clean column names
+
 ces <- read_csv(here("data", "ces3demographics.csv")) %>% 
   clean_names()
 ```
@@ -30,13 +31,15 @@ ces <- read_csv(here("data", "ces3demographics.csv")) %>%
 
 ggplot(data = ces, aes(x = white_percent, y = ces_3_0_score)) +
   geom_hex() +
-  labs(x = "White Population (%)", y = "CalEnviroScreen 3.0 Score") +
+  labs(x = "White Population (%)", 
+       y = "CalEnviroScreen 3.0 Score",
+       title = "Pollution Burden Scores and White Population (Johnston & Shepherd)") +
   scale_fill_gradient(low = "yellow", high = "red") + # Updates the color fill pattern
   theme_minimal() # updates the theme to show cleaner output graph
 
 ```
 
-Figure 1.0 shows that areas with a high percentage of white populations have lower pollution burdens and areas with low percentages of white populations have higher pollution burdens. There is a slight negative correlation between percentage of white populations and pollution burden.
+Figure 1 shows that communities with a high percentage of white populations tend to have lower pollution burdens overall, and areas with low percentages of white populations tend to have higher pollution burdens overall. There appears to be a negative correlation between percentage of white populations and pollution burden, which would be a good next step to test statistically.
 
 Data Citation: Rodriquez, Matthew and Ziese, Lauren. 2017. CalEnviroScreen 3.0. California Environmental Protection Agency. https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-30
 
