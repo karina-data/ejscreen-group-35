@@ -37,3 +37,6 @@ ggplot(data = ces, aes(x = white_percent, y = ces_3_0_score)) +
 ```
 
 Figure 1.0 shows that areas with a high percentage of white populations have lower pollution burdens and areas with low percentages of white populations have higher pollution burdens. There is a slight negative correlation between percentage of white populations and pollution burden.
+
+Data Citation: Rodriquez, Matthew and Ziese, Lauren. 2017. CalEnviroScreen 3.0. California Environmental Protection Agency. https://oehha.ca.gov/calenviroscreen/report/calenviroscreen-30
+
